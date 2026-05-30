@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+  
+  body {
+    font-family: var(--font-sans);
+    background-color: #030712; /* fallback slate-950 */
+    color: #f3f4f6; /* slate-100 */
+    overflow-x: hidden;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(139, 92, 246, 0.3);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(139, 92, 246, 0.6);
+}
+
+/* Glassmorphism Styles */
+.glass-panel {
+  background: rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.glass-panel-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-panel-hover:hover {
+  background: rgba(15, 23, 42, 0.6);
+  border-color: rgba(139, 92, 246, 0.25);
+  box-shadow: 0 10px 30px -10px rgba(139, 92, 246, 0.15);
+  transform: translateY(-2px);
+}
+
+/* Glowing text and effects */
+.glow-indigo {
+  text-shadow: 0 0 12px rgba(99, 102, 241, 0.4);
+}
+
+.glow-violet {
+  text-shadow: 0 0 12px rgba(139, 92, 246, 0.4);
+}
+
+/* Gradient text */
+.text-gradient {
+  background: linear-gradient(135deg, #c084fc 0%, #6366f1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-emerald {
+  background: linear-gradient(135deg, #34d399 0%, #059669 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Background Gradients */
+.radial-bg {
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(139, 92, 246, 0.08) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(59, 130, 246, 0.08) 0px, transparent 50%);
+}
+
+/* Keyframes for premium animations */
+@keyframes border-pulse {
+  0%, 100% {
+    border-color: rgba(139, 92, 246, 0.3);
+  }
+  50% {
+    border-color: rgba(59, 130, 246, 0.6);
+  }
+}
+
+.border-pulse-glow {
+  animation: border-pulse 4s infinite ease-in-out;
+}
+
+/* Override root layout of original Vite index.css template */
+#root {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  text-align: left !important;
+  border-inline: none !important;
+  min-height: 100vh !important;
+  display: block !important;
+  box-sizing: border-box !important;
+}
+
+/* Custom styles for Toastify custom look */
+.Toastify__toast-theme--dark {
+  background: rgba(15, 23, 42, 0.85) !important;
+  backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(139, 92, 246, 0.2) !important;
+  border-radius: 12px !important;
+  color: #f3f4f6 !important;
+}
+
+.Toastify__progress-bar--theme--dark {
+  background: linear-gradient(to right, #a78bfa, #6366f1) !important;
+}
