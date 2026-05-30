@@ -25,6 +25,11 @@ import lombok.RequiredArgsConstructor;
 public class TaskController {
 	
 	private final TaskService taskService;
+
+	@GetMapping("/")
+    public String home() {
+        return "Task Manager Backend Running Successfully!";
+    }
 	
 	@PostMapping
 	public TaskResponse createdTask(@RequestBody TaskRequest request) {
