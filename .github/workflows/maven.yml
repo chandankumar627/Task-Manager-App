@@ -1,0 +1,33 @@
+name: Spring Boot Backend CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: Task_Manager
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set Up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Grant Execute Permission
+        run: chmod +x mvnw
+
+      - name: Build Project
+        run: ./mvnw clean package
+
+      - name: Run Tests
+        run: ./mvnw test
