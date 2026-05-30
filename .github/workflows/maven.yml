@@ -1,4 +1,4 @@
-name: Spring Boot Backend CI
+name: Build and Deploy Spring Boot
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  build:
+  deploy:
     runs-on: self-hosted
 
     defaults:
@@ -17,14 +17,33 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Set Up Java
+      - name: Setup Java 21
         uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: '21'
 
-      - name: Grant Execute Permission
+      - name: Grant Maven Permission
         run: chmod +x mvnw
 
-      - name: Build Project
+      - name: Build Application
         run: ./mvnw clean package -DskipTests
+
+      - name: Build Docker Image
+        run: docker build -t task-manager-app:latest .
+
+      - name: Stop Old Container
+        run: |
+          docker stop task-manager-app || true
+          docker rm task-manager-app || true
+
+      - name: Run New Container
+        run: |
+          docker run -d \
+          --name task-manager-app \
+          -p 8080:8080 \
+          --restart unless-stopped \
+          task-manager-app:latest
+
+      - name: Show Running Containers
+        run: docker ps
