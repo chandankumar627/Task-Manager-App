@@ -133,7 +133,7 @@ const Dashboard = () => {
       <Navbar />
 
       {/* Main Content Area - Constrained to max-w-5xl for premium balanced look */}
-      <main className="flex-1 px-4 sm:px-6 lg:px-8 py-8 max-w-5xl w-full mx-auto flex flex-col gap-6">
+      <main className="flex-1 px-4 sm:px-6 lg:px-8 py-8  w-full mx-auto flex flex-col gap-6">
         
         {/* Header Title Row */}
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">

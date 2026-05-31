@@ -8,6 +8,6 @@ public class HomeController {
 
     @GetMapping("/")
     public String home() {
-        return "Task Manager Backend is Running Successfully!";
+        return "Task Manager Backend is Running Successfully and pipeline also working!";
     }
 }
